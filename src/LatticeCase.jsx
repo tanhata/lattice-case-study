@@ -2029,66 +2029,61 @@ export default function LatticeCase() {
                     </div>
                   </div>
                   
-                  <div style={{...styles.graphCanvas, width: 500, margin: '0 auto'}}>
+                  {/* Graph Canvas - Pure SVG */}
+                  <svg width="100%" height="320" viewBox="0 0 540 320" style={{background: '#F9FAFB', borderRadius: 8}}>
+                    {/* Connection lines - drawn first so nodes appear on top */}
+                    <line x1="100" y1="70" x2="220" y2="130" stroke="#D1D5DB" strokeWidth="2"/>
+                    <line x1="440" y1="70" x2="320" y2="130" stroke="#D1D5DB" strokeWidth="2"/>
+                    <line x1="220" y1="195" x2="100" y2="250" stroke="#D1D5DB" strokeWidth="2"/>
+                    <line x1="270" y1="195" x2="270" y2="250" stroke="#D1D5DB" strokeWidth="2"/>
+                    <line x1="320" y1="195" x2="440" y2="250" stroke="#D1D5DB" strokeWidth="2"/>
+                    
                     {/* Paper Node */}
-                    <div style={{...styles.graphNode, ...styles.nodePaper, left: 20, top: 10}}>
-                      <span style={styles.nodeIcon}>📄</span>
-                      <span style={styles.nodeLabel}>arXiv:2301.07041</span>
-                      <span style={styles.nodeType}>PAPER</span>
-                    </div>
+                    <g>
+                      <rect x="30" y="25" width="140" height="70" rx="8" fill="white" stroke="#E5E7EB" strokeWidth="1.5"/>
+                      <text x="100" y="52" textAnchor="middle" fontSize="11" fill="#9CA3AF">PAPER</text>
+                      <text x="100" y="72" textAnchor="middle" fontSize="13" fill="#111827" fontWeight="500">arXiv:2301.07041</text>
+                    </g>
                     
                     {/* Dataset Node */}
-                    <div style={{...styles.graphNode, ...styles.nodeDataset, left: 270, top: 10}}>
-                      <span style={styles.nodeIcon}>◈</span>
-                      <span style={styles.nodeLabel}>ImageNet-1k</span>
-                      <span style={styles.nodeType}>DATASET</span>
-                    </div>
+                    <g>
+                      <rect x="370" y="25" width="140" height="70" rx="8" fill="white" stroke="#E5E7EB" strokeWidth="1.5"/>
+                      <text x="440" y="52" textAnchor="middle" fontSize="11" fill="#9CA3AF">DATASET</text>
+                      <text x="440" y="72" textAnchor="middle" fontSize="13" fill="#111827" fontWeight="500">ImageNet-1k</text>
+                    </g>
                     
                     {/* Central Experiment - Selected */}
-                    <div style={{...styles.graphNode, ...styles.nodeExperiment, ...styles.nodeSelected, left: 145, top: 100}}>
-                      <span style={styles.nodeIcon}>●</span>
-                      <span style={styles.nodeLabel}>vit-finetune-042</span>
-                      <span style={styles.nodeType}>EXPERIMENT</span>
-                      <span style={styles.nodeStatus}>● Completed</span>
-                    </div>
+                    <g>
+                      <rect x="185" y="120" width="170" height="80" rx="8" fill="white" stroke="#6366F1" strokeWidth="2.5"/>
+                      <circle cx="270" cy="142" r="4" fill="#111827"/>
+                      <text x="270" y="162" textAnchor="middle" fontSize="13" fill="#111827" fontWeight="600">vit-finetune-042</text>
+                      <text x="270" y="178" textAnchor="middle" fontSize="10" fill="#9CA3AF">EXPERIMENT</text>
+                      <text x="270" y="193" textAnchor="middle" fontSize="10" fill="#10B981">● Completed</text>
+                    </g>
                     
-                    {/* Downstream: Eval */}
-                    <div style={{...styles.graphNode, ...styles.nodeEval, left: 10, top: 210}}>
-                      <span style={styles.nodeIcon}>◉</span>
-                      <span style={styles.nodeLabel}>Safety v2.1</span>
-                      <span style={styles.nodeType}>EVALUATION</span>
-                      <span style={{...styles.nodeStatus, color: defined.accent.success}}>✓ Pass</span>
-                    </div>
+                    {/* Eval Node */}
+                    <g>
+                      <rect x="30" y="240" width="140" height="70" rx="8" fill="#F0FDF4" stroke="#86EFAC" strokeWidth="1.5"/>
+                      <text x="100" y="267" textAnchor="middle" fontSize="11" fill="#9CA3AF">EVALUATION</text>
+                      <text x="100" y="287" textAnchor="middle" fontSize="13" fill="#111827" fontWeight="500">Safety v2.1</text>
+                      <text x="100" y="302" textAnchor="middle" fontSize="10" fill="#10B981">✓ Pass</text>
+                    </g>
                     
-                    {/* Downstream: Model */}
-                    <div style={{...styles.graphNode, ...styles.nodeModel, left: 145, top: 210}}>
-                      <span style={styles.nodeIcon}>◎</span>
-                      <span style={styles.nodeLabel}>vit-prod-v2.1</span>
-                      <span style={styles.nodeType}>MODEL</span>
-                    </div>
+                    {/* Model Node */}
+                    <g>
+                      <rect x="200" y="240" width="140" height="70" rx="8" fill="white" stroke="#E5E7EB" strokeWidth="1.5"/>
+                      <text x="270" y="267" textAnchor="middle" fontSize="11" fill="#9CA3AF">MODEL</text>
+                      <text x="270" y="287" textAnchor="middle" fontSize="13" fill="#111827" fontWeight="500">vit-prod-v2.1</text>
+                    </g>
                     
-                    {/* Downstream: Variant */}
-                    <div style={{...styles.graphNode, ...styles.nodeExperiment, left: 280, top: 210}}>
-                      <span style={styles.nodeIcon}>●</span>
-                      <span style={styles.nodeLabel}>vit-finetune-043</span>
-                      <span style={styles.nodeType}>EXPERIMENT</span>
-                      <span style={{...styles.nodeStatus, color: defined.accent.warning}}>● Running</span>
-                    </div>
-                    
-                    {/* Connection lines - SVG overlay */}
-                    <svg style={styles.graphLines} viewBox="0 0 500 300">
-                      {/* Paper to Central */}
-                      <line x1="80" y1="65" x2="200" y2="100" stroke={defined.border.medium} strokeWidth="2" />
-                      {/* Dataset to Central */}
-                      <line x1="320" y1="65" x2="250" y2="100" stroke={defined.border.medium} strokeWidth="2" />
-                      {/* Central to Eval */}
-                      <line x1="180" y1="175" x2="70" y2="210" stroke={defined.border.medium} strokeWidth="2" />
-                      {/* Central to Model */}
-                      <line x1="210" y1="175" x2="210" y2="210" stroke={defined.border.medium} strokeWidth="2" />
-                      {/* Central to Variant */}
-                      <line x1="250" y1="175" x2="330" y2="210" stroke={defined.border.medium} strokeWidth="2" />
-                    </svg>
-                  </div>
+                    {/* Variant Experiment Node */}
+                    <g>
+                      <rect x="370" y="240" width="140" height="70" rx="8" fill="white" stroke="#E5E7EB" strokeWidth="1.5"/>
+                      <circle cx="440" cy="262" r="3" fill="#111827"/>
+                      <text x="440" y="280" textAnchor="middle" fontSize="13" fill="#111827" fontWeight="500">vit-finetune-043</text>
+                      <text x="440" y="295" textAnchor="middle" fontSize="10" fill="#F59E0B">● Running</text>
+                    </g>
+                  </svg>
                 </div>
                 
                 {/* Right Panel - Details */}
