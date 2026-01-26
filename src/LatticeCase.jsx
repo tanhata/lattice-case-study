@@ -2029,23 +2029,23 @@ export default function LatticeCase() {
                     </div>
                   </div>
                   
-                  <div style={styles.graphCanvas}>
+                  <div style={{...styles.graphCanvas, width: 500, margin: '0 auto'}}>
                     {/* Paper Node */}
-                    <div style={{...styles.graphNode, ...styles.nodePaper, left: 40, top: 20}}>
+                    <div style={{...styles.graphNode, ...styles.nodePaper, left: 20, top: 10}}>
                       <span style={styles.nodeIcon}>📄</span>
                       <span style={styles.nodeLabel}>arXiv:2301.07041</span>
                       <span style={styles.nodeType}>PAPER</span>
                     </div>
                     
                     {/* Dataset Node */}
-                    <div style={{...styles.graphNode, ...styles.nodeDataset, left: 350, top: 20}}>
+                    <div style={{...styles.graphNode, ...styles.nodeDataset, left: 270, top: 10}}>
                       <span style={styles.nodeIcon}>◈</span>
                       <span style={styles.nodeLabel}>ImageNet-1k</span>
                       <span style={styles.nodeType}>DATASET</span>
                     </div>
                     
                     {/* Central Experiment - Selected */}
-                    <div style={{...styles.graphNode, ...styles.nodeExperiment, ...styles.nodeSelected, left: 180, top: 110}}>
+                    <div style={{...styles.graphNode, ...styles.nodeExperiment, ...styles.nodeSelected, left: 145, top: 100}}>
                       <span style={styles.nodeIcon}>●</span>
                       <span style={styles.nodeLabel}>vit-finetune-042</span>
                       <span style={styles.nodeType}>EXPERIMENT</span>
@@ -2053,7 +2053,7 @@ export default function LatticeCase() {
                     </div>
                     
                     {/* Downstream: Eval */}
-                    <div style={{...styles.graphNode, ...styles.nodeEval, left: 30, top: 220}}>
+                    <div style={{...styles.graphNode, ...styles.nodeEval, left: 10, top: 210}}>
                       <span style={styles.nodeIcon}>◉</span>
                       <span style={styles.nodeLabel}>Safety v2.1</span>
                       <span style={styles.nodeType}>EVALUATION</span>
@@ -2061,14 +2061,14 @@ export default function LatticeCase() {
                     </div>
                     
                     {/* Downstream: Model */}
-                    <div style={{...styles.graphNode, ...styles.nodeModel, left: 180, top: 220}}>
+                    <div style={{...styles.graphNode, ...styles.nodeModel, left: 145, top: 210}}>
                       <span style={styles.nodeIcon}>◎</span>
                       <span style={styles.nodeLabel}>vit-prod-v2.1</span>
                       <span style={styles.nodeType}>MODEL</span>
                     </div>
                     
                     {/* Downstream: Variant */}
-                    <div style={{...styles.graphNode, ...styles.nodeExperiment, left: 350, top: 220}}>
+                    <div style={{...styles.graphNode, ...styles.nodeExperiment, left: 280, top: 210}}>
                       <span style={styles.nodeIcon}>●</span>
                       <span style={styles.nodeLabel}>vit-finetune-043</span>
                       <span style={styles.nodeType}>EXPERIMENT</span>
@@ -2077,11 +2077,16 @@ export default function LatticeCase() {
                     
                     {/* Connection lines - SVG overlay */}
                     <svg style={styles.graphLines} viewBox="0 0 500 300">
-                      <line x1="100" y1="70" x2="220" y2="110" stroke={defined.border.medium} strokeWidth="2" />
-                      <line x1="390" y1="70" x2="280" y2="110" stroke={defined.border.medium} strokeWidth="2" />
-                      <line x1="200" y1="175" x2="90" y2="220" stroke={defined.border.medium} strokeWidth="2" />
-                      <line x1="240" y1="175" x2="240" y2="220" stroke={defined.border.medium} strokeWidth="2" />
-                      <line x1="280" y1="175" x2="390" y2="220" stroke={defined.border.medium} strokeWidth="2" />
+                      {/* Paper to Central */}
+                      <line x1="80" y1="65" x2="200" y2="100" stroke={defined.border.medium} strokeWidth="2" />
+                      {/* Dataset to Central */}
+                      <line x1="320" y1="65" x2="250" y2="100" stroke={defined.border.medium} strokeWidth="2" />
+                      {/* Central to Eval */}
+                      <line x1="180" y1="175" x2="70" y2="210" stroke={defined.border.medium} strokeWidth="2" />
+                      {/* Central to Model */}
+                      <line x1="210" y1="175" x2="210" y2="210" stroke={defined.border.medium} strokeWidth="2" />
+                      {/* Central to Variant */}
+                      <line x1="250" y1="175" x2="330" y2="210" stroke={defined.border.medium} strokeWidth="2" />
                     </svg>
                   </div>
                 </div>
