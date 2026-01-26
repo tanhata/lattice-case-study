@@ -1168,58 +1168,58 @@ export default function LatticeCase() {
                   <text x="330" y="390" textAnchor="middle" fontSize="12" fill={defined.text.secondary}>Implementation Effort →</text>
                   <text x="30" y="200" textAnchor="middle" fontSize="12" fill={defined.text.secondary} transform="rotate(-90, 30, 200)">User Pain Severity →</text>
                   
-                  {/* Quadrant labels */}
-                  <text x="180" y="100" textAnchor="middle" fontSize="11" fill={defined.accent.success} fontWeight="600">QUICK WINS</text>
-                  <text x="180" y="115" textAnchor="middle" fontSize="10" fill={defined.text.muted}>High impact, low effort</text>
+                  {/* Quadrant labels - positioned in corners */}
+                  <text x="100" y="70" textAnchor="start" fontSize="11" fill={defined.accent.success} fontWeight="600">QUICK WINS</text>
+                  <text x="100" y="85" textAnchor="start" fontSize="10" fill={defined.text.muted}>High impact, low effort</text>
                   
-                  <text x="480" y="100" textAnchor="middle" fontSize="11" fill={defined.accent.primary} fontWeight="600">BIG BETS</text>
-                  <text x="480" y="115" textAnchor="middle" fontSize="10" fill={defined.text.muted}>High impact, high effort</text>
+                  <text x="560" y="70" textAnchor="end" fontSize="11" fill={defined.accent.primary} fontWeight="600">BIG BETS</text>
+                  <text x="560" y="85" textAnchor="end" fontSize="10" fill={defined.text.muted}>High impact, high effort</text>
                   
-                  <text x="180" y="300" textAnchor="middle" fontSize="11" fill={defined.text.muted} fontWeight="600">FILL-INS</text>
-                  <text x="180" y="315" textAnchor="middle" fontSize="10" fill={defined.text.muted}>Low impact, low effort</text>
+                  <text x="100" y="330" textAnchor="start" fontSize="11" fill={defined.text.muted} fontWeight="600">FILL-INS</text>
+                  <text x="100" y="345" textAnchor="start" fontSize="10" fill={defined.text.muted}>Low impact, low effort</text>
                   
-                  <text x="480" y="300" textAnchor="middle" fontSize="11" fill={defined.accent.danger} fontWeight="600">AVOID</text>
-                  <text x="480" y="315" textAnchor="middle" fontSize="10" fill={defined.text.muted}>Low impact, high effort</text>
+                  <text x="560" y="330" textAnchor="end" fontSize="11" fill={defined.accent.danger} fontWeight="600">AVOID</text>
+                  <text x="560" y="345" textAnchor="end" fontSize="10" fill={defined.text.muted}>Low impact, high effort</text>
                   
                   {/* Quadrant lines */}
                   <line x1="330" y1="50" x2="330" y2="350" stroke={defined.border.light} strokeWidth="1" strokeDasharray="4,4"/>
                   <line x1="80" y1="200" x2="580" y2="200" stroke={defined.border.light} strokeWidth="1" strokeDasharray="4,4"/>
                   
                   {/* Feature bubbles */}
-                  {/* Graph nav - high pain, high effort */}
-                  <circle cx="450" cy="90" r="35" fill={defined.accent.primary} opacity="0.2" stroke={defined.accent.primary} strokeWidth="2"/>
-                  <text x="450" y="85" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Graph</text>
-                  <text x="450" y="98" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Navigation</text>
-                  <text x="450" y="115" textAnchor="middle" fontSize="9" fill={defined.accent.primary} fontWeight="600">P0</text>
+                  {/* Pre-run check - high pain, low-medium effort */}
+                  <circle cx="220" cy="120" r="30" fill={defined.accent.primary} opacity="0.2" stroke={defined.accent.primary} strokeWidth="2"/>
+                  <text x="220" y="115" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Pre-run</text>
+                  <text x="220" y="128" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Check</text>
+                  <text x="220" y="145" textAnchor="middle" fontSize="9" fill={defined.accent.primary} fontWeight="600">P0</text>
                   
-                  {/* Pre-run check - high pain, medium effort */}
-                  <circle cx="240" cy="90" r="30" fill={defined.accent.primary} opacity="0.2" stroke={defined.accent.primary} strokeWidth="2"/>
-                  <text x="240" y="85" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Pre-run</text>
-                  <text x="240" y="98" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Check</text>
-                  <text x="240" y="115" textAnchor="middle" fontSize="9" fill={defined.accent.primary} fontWeight="600">P0</text>
+                  {/* Graph nav - high pain, high effort */}
+                  <circle cx="420" cy="110" r="35" fill={defined.accent.primary} opacity="0.2" stroke={defined.accent.primary} strokeWidth="2"/>
+                  <text x="420" y="105" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Graph</text>
+                  <text x="420" y="118" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Navigation</text>
+                  <text x="420" y="135" textAnchor="middle" fontSize="9" fill={defined.accent.primary} fontWeight="600">P0</text>
                   
                   {/* Eval system - high pain, high effort */}
-                  <circle cx="520" cy="130" r="32" fill={defined.accent.primary} opacity="0.2" stroke={defined.accent.primary} strokeWidth="2"/>
-                  <text x="520" y="125" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Eval</text>
-                  <text x="520" y="138" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">System</text>
-                  <text x="520" y="155" textAnchor="middle" fontSize="9" fill={defined.accent.primary} fontWeight="600">P0</text>
-                  
-                  {/* Paper import - high pain, medium effort */}
-                  <circle cx="290" cy="150" r="28" fill={defined.accent.warning} opacity="0.2" stroke={defined.accent.warning} strokeWidth="2"/>
-                  <text x="290" y="145" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Paper</text>
-                  <text x="290" y="158" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Import</text>
-                  <text x="290" y="175" textAnchor="middle" fontSize="9" fill={defined.accent.warning} fontWeight="600">P1</text>
+                  <circle cx="520" cy="160" r="32" fill={defined.accent.primary} opacity="0.2" stroke={defined.accent.primary} strokeWidth="2"/>
+                  <text x="520" y="155" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Eval</text>
+                  <text x="520" y="168" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">System</text>
+                  <text x="520" y="185" textAnchor="middle" fontSize="9" fill={defined.accent.primary} fontWeight="600">P0</text>
                   
                   {/* Annotations - medium pain, low effort */}
-                  <circle cx="150" cy="150" r="24" fill={defined.accent.warning} opacity="0.2" stroke={defined.accent.warning} strokeWidth="2"/>
-                  <text x="150" y="148" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Annotations</text>
-                  <text x="150" y="165" textAnchor="middle" fontSize="9" fill={defined.accent.warning} fontWeight="600">P1</text>
+                  <circle cx="150" cy="160" r="24" fill={defined.accent.warning} opacity="0.2" stroke={defined.accent.warning} strokeWidth="2"/>
+                  <text x="150" y="158" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Annotations</text>
+                  <text x="150" y="175" textAnchor="middle" fontSize="9" fill={defined.accent.warning} fontWeight="600">P1</text>
+                  
+                  {/* Paper import - high pain, medium effort */}
+                  <circle cx="280" cy="165" r="28" fill={defined.accent.warning} opacity="0.2" stroke={defined.accent.warning} strokeWidth="2"/>
+                  <text x="280" y="160" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Paper</text>
+                  <text x="280" y="173" textAnchor="middle" fontSize="10" fill={defined.text.primary} fontWeight="500">Import</text>
+                  <text x="280" y="190" textAnchor="middle" fontSize="9" fill={defined.accent.warning} fontWeight="600">P1</text>
                   
                   {/* Deploy pipeline - medium pain, very high effort */}
-                  <circle cx="500" cy="260" r="28" fill={defined.text.muted} opacity="0.2" stroke={defined.text.muted} strokeWidth="2"/>
-                  <text x="500" y="255" textAnchor="middle" fontSize="10" fill={defined.text.secondary} fontWeight="500">Deploy</text>
-                  <text x="500" y="268" textAnchor="middle" fontSize="10" fill={defined.text.secondary} fontWeight="500">Pipeline</text>
-                  <text x="500" y="285" textAnchor="middle" fontSize="9" fill={defined.text.muted} fontWeight="600">P2</text>
+                  <circle cx="480" cy="270" r="28" fill={defined.text.muted} opacity="0.2" stroke={defined.text.muted} strokeWidth="2"/>
+                  <text x="480" y="265" textAnchor="middle" fontSize="10" fill={defined.text.secondary} fontWeight="500">Deploy</text>
+                  <text x="480" y="278" textAnchor="middle" fontSize="10" fill={defined.text.secondary} fontWeight="500">Pipeline</text>
+                  <text x="480" y="295" textAnchor="middle" fontSize="9" fill={defined.text.muted} fontWeight="600">P2</text>
                 </svg>
               </div>
             </div>
