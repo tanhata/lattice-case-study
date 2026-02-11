@@ -51,6 +51,5 @@ src/
 index.html          # HTML template with fonts
 ```
 
----
 
-*This is a portfolio case study, not a production product.*
+
