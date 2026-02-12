@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 // ============================================
 // LATTICE: Next-Gen Experiment Tracking
-// Tabbed Case Study
+// Experimental Concept Validation
 // ============================================
 
 const defined = {
@@ -217,7 +217,6 @@ const predictions = [
 // ============================================
 
 export default function LatticeCase() {
-  const [activeTab, setActiveTab] = useState('overview');
   const [activePersona, setActivePersona] = useState(0);
   const [activePhase, setActivePhase] = useState(1);
 
@@ -225,59 +224,57 @@ export default function LatticeCase() {
     <div style={styles.container}>
       
       {/* HEADER */}
-      <header style={styles.header}>
+      <header style={{...styles.header, position: 'relative'}}>
         <div style={styles.headerTop}>
           <div style={styles.logo}>
             <div style={styles.logoMark}>L</div>
             <span style={styles.logoText}>Lattice</span>
           </div>
+          <span style={{fontSize: 13, color: defined.text.muted}}>Experimental Concept Validation</span>
         </div>
         
         <h1 style={styles.title}>What Does Next-Gen Experiment Tracking Look Like?</h1>
         
-        {/* TABS */}
-        <div style={styles.tabs}>
-          {[
-            { id: 'overview', label: 'Overview' },
-            { id: 'research', label: 'Research' },
-            { id: 'product', label: 'Design' },
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              style={{
-                ...styles.tab,
-                borderBottomColor: activeTab === tab.id ? defined.accent.primary : 'transparent',
-                color: activeTab === tab.id ? defined.text.primary : defined.text.muted,
-              }}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Table of Contents */}
+        <div style={{display: 'flex', gap: 24, marginTop: 16, paddingTop: 16, borderTop: `1px solid ${defined.border.light}`}}>
+          <span style={{fontSize: 12, color: defined.text.muted}}>Jump to:</span>
+          <a href="#overview" style={{fontSize: 12, color: defined.accent.primary, textDecoration: 'none'}}>Overview</a>
+          <a href="#research" style={{fontSize: 12, color: defined.accent.primary, textDecoration: 'none'}}>Research</a>
+          <a href="#design" style={{fontSize: 12, color: defined.accent.primary, textDecoration: 'none'}}>Design</a>
         </div>
       </header>
 
       {/* ============================================ */}
-      {/* OVERVIEW TAB */}
+      {/* OVERVIEW SECTION */}
       {/* ============================================ */}
-      {activeTab === 'overview' && (
-        <div style={styles.tabContent}>
+      <div id="overview" style={{borderTop: `3px solid ${defined.accent.primary}`}}>
+        <div style={{padding: '24px 48px', background: defined.bg.tertiary}}>
+          <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary, letterSpacing: 1, textTransform: 'uppercase'}}>Part 1</span>
+          <h2 style={{fontSize: 28, fontWeight: 600, margin: '8px 0 0 0'}}>Overview</h2>
+        </div>
+      </div>
+      <div style={styles.tabContent}>
           
           {/* Hero Section */}
           <section style={{padding: '48px', background: `linear-gradient(135deg, ${defined.bg.secondary} 0%, ${defined.bg.primary} 100%)`}}>
             <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center'}}>
               <div>
-                <div style={{display: 'flex', gap: 16, marginBottom: 24}}>
+                <div style={{display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap'}}>
                   <span style={{padding: '6px 12px', background: defined.bg.tertiary, borderRadius: 4, fontSize: 12, fontWeight: 500}}>12 weeks</span>
-                  <span style={{padding: '6px 12px', background: defined.bg.tertiary, borderRadius: 4, fontSize: 12, fontWeight: 500}}>Solo designer</span>
+                  <span style={{padding: '6px 12px', background: defined.bg.tertiary, borderRadius: 4, fontSize: 12, fontWeight: 500}}>Lead Designer</span>
                   <span style={{padding: '6px 12px', background: defined.bg.tertiary, borderRadius: 4, fontSize: 12, fontWeight: 500}}>0 → 1</span>
+                  <span style={{padding: '6px 12px', background: 'rgba(99, 102, 241, 0.1)', borderRadius: 4, fontSize: 12, fontWeight: 500, color: defined.accent.primary}}>Concept Validation</span>
                 </div>
                 <h2 style={{fontSize: 28, fontWeight: 600, margin: '0 0 16px 0', lineHeight: 1.3}}>
                   Redesigning experiment tracking for the age of foundation models
                 </h2>
-                <p style={{fontSize: 16, color: defined.text.secondary, margin: '0 0 24px 0', lineHeight: 1.6}}>
-                  Research revealed current tools optimize for the wrong phase. I designed a graph-based system 
-                  that connects experiments to papers, evaluations, and team knowledge.
+                <p style={{fontSize: 16, color: defined.text.secondary, margin: '0 0 16px 0', lineHeight: 1.6}}>
+                  An experimental concept exploring whether graph-based experiment connectivity 
+                  can reduce reproduction friction and duplicate work in ML teams.
+                </p>
+                <p style={{fontSize: 13, color: defined.text.muted, margin: '0 0 24px 0', lineHeight: 1.5}}>
+                  Research revealed current tools optimize for the wrong phase. This concept tests whether 
+                  making relationships the primary navigation paradigm changes how teams discover and build on prior work.
                 </p>
                 <div style={{display: 'flex', gap: 32}}>
                   <div>
@@ -377,7 +374,7 @@ export default function LatticeCase() {
                   After 12 interviews and surveying 47 ML practitioners across academia, big tech, startups, and independent research, 
                   a clear pattern emerged: <strong style={{color: defined.text.primary}}>tools optimize for the wrong phase.</strong>
                 </p>
-                <div style={{padding: 20, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.danger}`}}>
+                <div style={{padding: 20, background: defined.bg.secondary, borderRadius: 8}}>
                   <p style={{fontSize: 15, margin: 0, lineHeight: 1.6}}>
                     <strong>Reproduction</strong> — where 43% of workflow time is spent (per telemetry) — has almost no tool support. 
                     <strong> Experimentation</strong> — where tools are excellent — has relatively low pain.
@@ -648,12 +645,12 @@ export default function LatticeCase() {
               </div>
               <div style={{padding: 20, background: defined.bg.secondary, borderRadius: 8}}>
                 <span style={styles.detailLabel}>Team</span>
-                <p style={{fontSize: 15, fontWeight: 500, margin: '8px 0 0 0'}}>Solo designer</p>
-                <p style={{fontSize: 12, color: defined.text.muted, margin: '2px 0 0 0'}}>+ PM, 2 eng for feasibility</p>
+                <p style={{fontSize: 15, fontWeight: 500, margin: '8px 0 0 0'}}>Cross-functional</p>
+                <p style={{fontSize: 12, color: defined.text.muted, margin: '2px 0 0 0'}}>PM, 3 eng, 1 researcher, data scientist</p>
               </div>
               <div style={{padding: 20, background: defined.bg.secondary, borderRadius: 8}}>
                 <span style={styles.detailLabel}>My Role</span>
-                <p style={{fontSize: 15, fontWeight: 500, margin: '8px 0 0 0'}}>End-to-end</p>
+                <p style={{fontSize: 15, fontWeight: 500, margin: '8px 0 0 0'}}>Lead Designer</p>
                 <p style={{fontSize: 12, color: defined.text.muted, margin: '2px 0 0 0'}}>Research → Strategy → UI</p>
               </div>
               <div style={{padding: 20, background: defined.bg.secondary, borderRadius: 8}}>
@@ -665,13 +662,17 @@ export default function LatticeCase() {
           </section>
 
         </div>
-      )}
 
       {/* ============================================ */}
-      {/* RESEARCH TAB */}
+      {/* RESEARCH SECTION */}
       {/* ============================================ */}
-      {activeTab === 'research' && (
-        <div style={styles.tabContent}>
+      <div id="research" style={{borderTop: `3px solid ${defined.accent.primary}`, marginTop: 48}}>
+        <div style={{padding: '24px 48px', background: defined.bg.tertiary}}>
+          <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary, letterSpacing: 1, textTransform: 'uppercase'}}>Part 2</span>
+          <h2 style={{fontSize: 28, fontWeight: 600, margin: '8px 0 0 0'}}>Research</h2>
+        </div>
+      </div>
+      <div style={styles.tabContent}>
           
           {/* Method */}
           <section style={styles.section}>
@@ -693,7 +694,7 @@ export default function LatticeCase() {
               </div>
               
               {/* Phase 2 */}
-              <div style={{padding: 24, background: defined.bg.secondary, borderRadius: 8, border: `2px solid ${defined.accent.primary}`}}>
+              <div style={{padding: 24, background: defined.bg.secondary, borderRadius: 8, border: `1px solid ${defined.border.medium}`}}>
                 <span style={{fontSize: 11, fontWeight: 600, color: defined.accent.primary, letterSpacing: 0.5}}>PHASE 2 · WEEKS 5-8</span>
                 <h4 style={{fontSize: 15, fontWeight: 600, margin: '12px 0 16px 0'}}>Generative Research</h4>
                 <ul style={{margin: 0, paddingLeft: 16, fontSize: 13, color: defined.text.secondary, lineHeight: 1.8}}>
@@ -716,7 +717,7 @@ export default function LatticeCase() {
             </div>
             
             {/* Telemetry callout */}
-            <div style={{marginTop: 32, padding: 20, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+            <div style={{marginTop: 32, padding: 20, background: defined.bg.secondary, borderRadius: 8}}>
               <span style={{fontSize: 12, fontWeight: 600}}>Why telemetry?</span>
               <p style={{fontSize: 14, color: defined.text.secondary, margin: '8px 0 0 0'}}>
                 Interviews reveal what people <em>say</em> they do. Telemetry shows what they <em>actually</em> do. 
@@ -804,42 +805,42 @@ export default function LatticeCase() {
             
             {/* Visual Journey Timeline */}
             <div style={{marginTop: 32, marginBottom: 32, padding: 24, background: defined.bg.secondary, borderRadius: 8}}>
-              <svg width="100%" height="140" viewBox="0 0 800 140">
+              <svg width="100%" height="160" viewBox="0 0 800 160">
                 {/* Timeline base */}
-                <line x1="50" y1="70" x2="750" y2="70" stroke={defined.border.medium} strokeWidth="3"/>
+                <line x1="50" y1="90" x2="750" y2="90" stroke={defined.border.medium} strokeWidth="3"/>
                 
                 {/* Phase markers */}
                 {[
-                  { x: 90, name: 'Discovery', pain: 'Low', size: 20 },
-                  { x: 230, name: 'Reproduction', pain: 'Extreme', size: 45 },
-                  { x: 400, name: 'Baseline', pain: 'Moderate', size: 28 },
-                  { x: 550, name: 'Experimentation', pain: 'Low', size: 22 },
-                  { x: 710, name: 'Evaluation', pain: 'Moderate', size: 32 },
+                  { x: 90, name: 'Discovery', pain: 'Low', size: 18 },
+                  { x: 230, name: 'Reproduction', pain: 'Extreme', size: 35 },
+                  { x: 400, name: 'Baseline', pain: 'Moderate', size: 22 },
+                  { x: 550, name: 'Experimentation', pain: 'Low', size: 18 },
+                  { x: 710, name: 'Evaluation', pain: 'Moderate', size: 24 },
                 ].map((phase, i) => (
                   <g key={i}>
                     {/* Pain indicator circle - size = pain level */}
                     <circle 
                       cx={phase.x} 
-                      cy="70" 
+                      cy="90" 
                       r={phase.size} 
                       fill={phase.pain === 'Extreme' ? defined.accent.danger : phase.pain === 'Moderate' ? defined.accent.warning : defined.bg.tertiary}
                       opacity={phase.pain === 'Extreme' ? 0.9 : phase.pain === 'Moderate' ? 0.7 : 0.5}
                     />
-                    <circle cx={phase.x} cy="70" r="8" fill={defined.bg.primary} stroke={defined.text.primary} strokeWidth="2"/>
+                    <circle cx={phase.x} cy="90" r="8" fill={defined.bg.primary} stroke={defined.text.primary} strokeWidth="2"/>
                     
                     {/* Phase name */}
-                    <text x={phase.x} y="120" textAnchor="middle" fontSize="11" fill={defined.text.primary} fontWeight="500">{phase.name}</text>
+                    <text x={phase.x} y="145" textAnchor="middle" fontSize="11" fill={defined.text.primary} fontWeight="500">{phase.name}</text>
                     
                     {/* Pain label */}
-                    <text x={phase.x} y="30" textAnchor="middle" fontSize="9" fill={phase.pain === 'Extreme' ? defined.accent.danger : phase.pain === 'Moderate' ? defined.accent.warning : defined.text.muted}>
+                    <text x={phase.x} y="38" textAnchor="middle" fontSize="9" fill={phase.pain === 'Extreme' ? defined.accent.danger : phase.pain === 'Moderate' ? defined.accent.warning : defined.text.muted}>
                       {phase.pain}
                     </text>
                   </g>
                 ))}
                 
                 {/* The Gap callout */}
-                <rect x="175" y="2" width="110" height="18" fill={defined.accent.danger} rx="9"/>
-                <text x="230" y="14" textAnchor="middle" fontSize="9" fill="#FFF" fontWeight="600">← THE GAP</text>
+                <rect x="175" y="10" width="110" height="18" fill={defined.accent.danger} rx="9"/>
+                <text x="230" y="22" textAnchor="middle" fontSize="9" fill="#FFF" fontWeight="600">← THE GAP</text>
               </svg>
               <div style={{display: 'flex', justifyContent: 'center', gap: 24, marginTop: 8, fontSize: 11, color: defined.text.muted}}>
                 <span>Circle size = pain level</span>
@@ -859,7 +860,7 @@ export default function LatticeCase() {
                     ...styles.journeyTab,
                     background: activePhase === i ? defined.text.primary : 'transparent',
                     color: activePhase === i ? defined.bg.primary : defined.text.primary,
-                    borderColor: phase.gap ? defined.accent.danger : defined.border.medium,
+                    borderColor: defined.border.medium,
                   }}
                 >
                   {phase.name}
@@ -1059,7 +1060,7 @@ export default function LatticeCase() {
             </div>
 
             {/* Whitespace summary */}
-            <div style={{padding: 24, background: defined.bg.secondary, borderRadius: 8, border: `2px solid ${defined.accent.primary}`}}>
+            <div style={{padding: 24, background: defined.bg.secondary, borderRadius: 8, border: `1px solid ${defined.border.medium}`}}>
               <h4 style={{fontSize: 15, fontWeight: 600, margin: '0 0 12px 0'}}>The Opportunity</h4>
               <p style={{fontSize: 14, color: defined.text.secondary, margin: 0}}>
                 Competitors have converged on the same core: logging, dashboards, model registry. 
@@ -1108,16 +1109,70 @@ export default function LatticeCase() {
                 </div>
               </div>
             </div>
+            
+            {/* Why Graph Not List */}
+            <div style={{marginTop: 48, padding: 24, background: defined.bg.primary, borderRadius: 8, border: `1px solid ${defined.border.light}`}}>
+              <h4 style={{fontSize: 16, fontWeight: 600, margin: '0 0 16px 0'}}>Why a Graph, Not a List?</h4>
+              <p style={{fontSize: 14, color: defined.text.secondary, margin: '0 0 16px 0', lineHeight: 1.7}}>
+                The question we kept asking: if relationships matter, why not just add a "related experiments" column to a table?
+              </p>
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24}}>
+                <div>
+                  <span style={{fontSize: 12, fontWeight: 600, color: defined.text.muted, textTransform: 'uppercase', letterSpacing: 0.5}}>List/Table View</span>
+                  <ul style={{margin: '12px 0 0 0', paddingLeft: 16, fontSize: 13, color: defined.text.secondary, lineHeight: 1.8}}>
+                    <li>Optimized for <strong>known queries</strong>: "show me runs from last week"</li>
+                    <li>Relationships are metadata, not structure</li>
+                    <li>Breaks down at 2+ hops: "what led to the thing that led to this?"</li>
+                    <li>Good for: sorting, filtering, bulk operations</li>
+                  </ul>
+                </div>
+                <div>
+                  <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary, textTransform: 'uppercase', letterSpacing: 0.5}}>Graph View</span>
+                  <ul style={{margin: '12px 0 0 0', paddingLeft: 16, fontSize: 13, color: defined.text.secondary, lineHeight: 1.8}}>
+                    <li>Optimized for <strong>exploration</strong>: "what's connected to this?"</li>
+                    <li>Relationships are the primary navigation</li>
+                    <li>Multi-hop traversal is natural: paper → baseline → your fork → evaluation</li>
+                    <li>Good for: discovery, lineage, understanding context</li>
+                  </ul>
+                </div>
+              </div>
+              <p style={{fontSize: 13, color: defined.text.muted, margin: '16px 0 0 0', fontStyle: 'italic'}}>
+                The hypothesis: reproduction and knowledge discovery are exploration problems, not query problems. You don't know what you're looking for until you see what's connected.
+              </p>
+            </div>
+            
+            {/* Design Bet: Tooling vs Documentation */}
+            <div style={{marginTop: 24, padding: 24, background: defined.bg.primary, borderRadius: 8, border: `1px solid ${defined.border.light}`}}>
+              <h4 style={{fontSize: 16, fontWeight: 600, margin: '0 0 16px 0'}}>The Core Bet</h4>
+              <p style={{fontSize: 14, color: defined.text.secondary, margin: '0 0 16px 0', lineHeight: 1.7}}>
+                A reasonable counterargument: reproduction pain comes from bad documentation and broken code, not missing tools. If authors just wrote better READMEs, we wouldn't need this.
+              </p>
+              <p style={{fontSize: 14, color: defined.text.secondary, margin: '0 0 16px 0', lineHeight: 1.7}}>
+                We're betting that's only partially true. Even with perfect documentation:
+              </p>
+              <ul style={{margin: '0 0 16px 0', paddingLeft: 20, fontSize: 14, color: defined.text.secondary, lineHeight: 1.8}}>
+                <li><strong>You still can't find it.</strong> Documentation exists but is scattered across GitHub, papers, tweets, and Slack. There's no searchable index of "what configs have people tried for X?"</li>
+                <li><strong>You still don't know if it works.</strong> A README says "run this" but doesn't tell you if anyone else succeeded, how long it took them, or what they changed.</li>
+                <li><strong>You still duplicate effort.</strong> Your teammate ran the same thing last month. You'd never know unless you asked in standup.</li>
+              </ul>
+              <p style={{fontSize: 13, color: defined.text.muted, fontStyle: 'italic'}}>
+                This is an experimental validation of whether structured experiment connectivity reduces reproduction friction — not a claim that tooling solves everything.
+              </p>
+            </div>
           </section>
 
         </div>
-      )}
 
       {/* ============================================ */}
-      {/* PRODUCT TAB */}
+      {/* DESIGN SECTION */}
       {/* ============================================ */}
-      {activeTab === 'product' && (
-        <div style={styles.tabContent}>
+      <div id="design" style={{borderTop: `3px solid ${defined.accent.primary}`, marginTop: 48}}>
+        <div style={{padding: '24px 48px', background: defined.bg.tertiary}}>
+          <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary, letterSpacing: 1, textTransform: 'uppercase'}}>Part 3</span>
+          <h2 style={{fontSize: 28, fontWeight: 600, margin: '8px 0 0 0'}}>Design</h2>
+        </div>
+      </div>
+      <div style={styles.tabContent}>
           
           {/* ============================================ */}
           {/* SECTION 1: RESEARCH → FEATURES */}
@@ -1225,7 +1280,7 @@ export default function LatticeCase() {
             </div>
 
             {/* MVP Scope */}
-            <div style={{marginTop: 48, padding: 24, border: `2px solid ${defined.accent.primary}`, borderRadius: 8}}>
+            <div style={{marginTop: 48, padding: 24, border: `1px solid ${defined.border.medium}`, borderRadius: 8}}>
               <h4 style={{fontSize: 16, fontWeight: 600, margin: '0 0 16px 0'}}>MVP Scope (P0 Features)</h4>
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24}}>
                 <div>
@@ -1718,7 +1773,7 @@ export default function LatticeCase() {
                     <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>V3: Final</span>
                     <span style={{fontSize: 11, color: defined.accent.success}}>Week 3</span>
                   </div>
-                  <div style={{background: '#FFF', border: `2px solid ${defined.accent.primary}`, borderRadius: 8, overflow: 'hidden'}}>
+                  <div style={{background: '#FFF', border: `1px solid ${defined.border.medium}`, borderRadius: 8, overflow: 'hidden'}}>
                     <svg width="100%" height="200" viewBox="0 0 280 200" style={{background: '#FAFAFA'}}>
                       {/* Sidebar with icons */}
                       <rect x="10" y="10" width="45" height="180" fill="#18181B" stroke="none"/>
@@ -2128,22 +2183,22 @@ export default function LatticeCase() {
             <div style={{marginTop: 32}}>
               <span style={styles.detailLabel}>Annotated Design Decisions</span>
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 16}}>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>① Graph as primary nav</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Not buried in a tab — it's the default view. Relationships are the product, not a feature.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "I can't find what others have tried" — cited by 9 of 12 interview participants</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>② Paper node prominent</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Papers are first-class citizens, shown at top of graph. Every experiment traces back to literature.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: Reproduction accounts for 43% of workflow time (telemetry)</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>③ Downstream visible</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>See what an experiment produced: models, evaluations, variants. Answer "what led to this deployed model?"</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "How did we get to production v2?" — Sarah</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>④ Detail panel always visible</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>No modals or popovers. Selection immediately shows metadata, cost, relationships, and actions.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Testing: "With the canvas-only version, I clicked constantly" — Liam</p>
@@ -2235,22 +2290,22 @@ export default function LatticeCase() {
             <div style={{marginTop: 32}}>
               <span style={styles.detailLabel}>Annotated Design Decisions</span>
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 16}}>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.warning}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.warning}}>① Mandatory gate</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Can't be dismissed or skipped. Users must acknowledge estimates and similar experiments before running.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "$15k wasted on duplicates" — Marcella's lab</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.warning}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.warning}}>② Cost with confidence interval</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Not just "$847" but "±$120 based on 12 similar runs." Honest about uncertainty.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "Cost estimation is guesswork" — Liam</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.warning}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.warning}}>③ Similarity by config</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Compares actual parameters (lr, epochs, model) not just tags. "94% similar" is meaningful.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: Same tags, different configs = wasted time</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.warning}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.warning}}>④ Shows who ran similar</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>"run-038 by Liam" enables "let me ask Liam" before burning compute. Human coordination.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Testing: "Now I can just Slack them" — David</p>
@@ -2388,22 +2443,22 @@ export default function LatticeCase() {
             <div style={{marginTop: 32}}>
               <span style={styles.detailLabel}>Annotated Design Decisions</span>
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 16}}>
-                <div style={{padding: 16, background: '#FFF', borderRadius: 8, borderLeft: `3px solid ${defined.accent.success}`}}>
+                <div style={{padding: 16, background: '#FFF', borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.success}}>① Eval-centric view</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Navigate to an eval, see all models tested against it. Eval is the anchor, not the model.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "Their eval and my eval are different things" — Sarah</p>
                 </div>
-                <div style={{padding: 16, background: '#FFF', borderRadius: 8, borderLeft: `3px solid ${defined.accent.success}`}}>
+                <div style={{padding: 16, background: '#FFF', borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.success}}>② Evals are versioned</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>"Safety Benchmark v2.1" — evals evolve. Track what version was used for each model.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "I re-run all research evaluations anyway" — Sarah</p>
                 </div>
-                <div style={{padding: 16, background: '#FFF', borderRadius: 8, borderLeft: `3px solid ${defined.accent.success}`}}>
+                <div style={{padding: 16, background: '#FFF', borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.success}}>③ Threshold is visible</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>90% pass threshold is explicit, not hidden in code. Shows who set it and when.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Testing: "Now I know why it failed" — immediate clarity</p>
                 </div>
-                <div style={{padding: 16, background: '#FFF', borderRadius: 8, borderLeft: `3px solid ${defined.accent.success}`}}>
+                <div style={{padding: 16, background: '#FFF', borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.success}}>④ Lineage preserved</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>"from vit-finetune-042" — every model traces back to the experiment that produced it.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "How did we get to production v2?" — Sarah</p>
@@ -2512,22 +2567,22 @@ export default function LatticeCase() {
             <div style={{marginTop: 32}}>
               <span style={styles.detailLabel}>Annotated Design Decisions</span>
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 16}}>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>① Community attempts visible</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Before starting, see who else tried. Success rate, time to reproduce, notes from their attempts.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "I spend 3 weeks then find someone already solved it" — David</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>② Time-to-reproduce shown</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>"Avg. reproduction time: 10 days" — sets realistic expectations. Reduces frustration.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "I thought it would take 2 days" — common misestimation</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>③ Code verification status</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Shows if official code exists, if it runs, if dependencies are met. "✓ Runs" vs. "⚠ Issues"</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "GitHub stars ≠ working code" — Liam</p>
                 </div>
-                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8, borderLeft: `3px solid ${defined.accent.primary}`}}>
+                <div style={{padding: 16, background: defined.bg.secondary, borderRadius: 8}}>
                   <span style={{fontSize: 12, fontWeight: 600, color: defined.accent.primary}}>④ Start from literature</span>
                   <p style={{fontSize: 13, color: defined.text.secondary, margin: '8px 0 0 0'}}>Papers are the entry point. Import creates a node in the graph that all reproduction experiments link to.</p>
                   <p style={{fontSize: 12, color: defined.text.muted, margin: '8px 0 0 0', fontStyle: 'italic'}}>Research: "Experiments exist in isolation from literature" — all participants</p>
@@ -2616,14 +2671,13 @@ export default function LatticeCase() {
           </section>
 
         </div>
-      )}
 
       {/* FOOTER */}
       <footer style={styles.footer}>
         <div style={styles.footerContent}>
           <div style={styles.footerLeft}>
             <div style={styles.logoMark}>L</div>
-            <span>Lattice — Case Study 2025</span>
+            <span>Lattice — Concept Validation 2025</span>
           </div>
         </div>
       </footer>
@@ -2666,7 +2720,7 @@ const styles = {
   statLabel: { fontSize: 14, color: defined.text.secondary, lineHeight: 1.4 },
 
   // Insight
-  insightBox: { border: `2px solid ${defined.accent.primary}`, borderRadius: 8, padding: 24, marginBottom: 24 },
+  insightBox: { border: `1px solid ${defined.border.medium}`, borderRadius: 8, padding: 24, marginBottom: 24 },
   insightText: { fontSize: 16, margin: 0, lineHeight: 1.5 },
   reframeRow: { display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center' },
   reframeItem: { background: defined.bg.secondary, borderRadius: 8, padding: 20 },
@@ -2723,7 +2777,7 @@ const styles = {
   metaValue: { fontSize: 14, fontWeight: 500 },
   journeyContent: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, marginBottom: 20 },
   activityList: { margin: '8px 0 0', paddingLeft: 18, fontSize: 14, color: defined.text.secondary, lineHeight: 1.7 },
-  gapIndicator: { background: defined.bg.primary, border: `2px solid ${defined.accent.danger}`, borderRadius: 6, padding: 16 },
+  gapIndicator: { background: defined.bg.primary, border: `1px solid ${defined.border.medium}`, borderRadius: 6, padding: 16 },
   gapLabel: { display: 'block', fontSize: 11, fontWeight: 600, color: defined.accent.danger, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 4 },
   gapText: { fontSize: 14, margin: 0, color: defined.accent.danger },
 
@@ -2732,7 +2786,7 @@ const styles = {
   painTableHeader: { display: 'grid', gridTemplateColumns: '160px 100px 120px 80px', gap: 16, padding: '12px 16px', background: defined.bg.tertiary, borderRadius: '8px 8px 0 0', fontSize: 11, fontWeight: 600, color: defined.text.muted, letterSpacing: 0.5, textTransform: 'uppercase' },
   painTableRow: { display: 'grid', gridTemplateColumns: '160px 100px 120px 80px', gap: 16, padding: '12px 16px', borderBottom: `1px solid ${defined.border.light}`, fontSize: 14 },
   painPhase: { fontWeight: 500 },
-  mismatchBox: { border: `2px solid ${defined.accent.danger}`, borderRadius: 8, padding: 20 },
+  mismatchBox: { border: `1px solid ${defined.border.medium}`, borderRadius: 8, padding: 20 },
   mismatchTitle: { fontSize: 15, fontWeight: 600, margin: '0 0 8px' },
   mismatchText: { fontSize: 14, margin: 0, lineHeight: 1.5 },
 
@@ -2832,7 +2886,7 @@ const styles = {
   estimateLabel: { display: 'block', fontSize: 11, color: defined.text.muted, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 8 },
   estimateValue: { display: 'block', fontSize: 16, fontWeight: 600 },
   estimateRange: { display: 'block', fontSize: 11, color: defined.text.muted, marginTop: 4 },
-  preRunWarningBox: { background: 'rgba(245, 158, 11, 0.1)', border: `1px solid ${defined.accent.warning}`, borderRadius: 8, padding: 16, marginBottom: 24 },
+  preRunWarningBox: { background: defined.bg.secondary, border: `1px solid ${defined.border.medium}`, borderRadius: 8, padding: 16, marginBottom: 24 },
   warningHeader: { display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 },
   warningIcon: { fontSize: 16 },
   warningTitle: { fontSize: 14, fontWeight: 600, color: defined.accent.warning },
@@ -2914,7 +2968,7 @@ const styles = {
   questionsList: { margin: '0', paddingLeft: 18, fontSize: 15, lineHeight: 1.8 },
   
   // Conclusion
-  conclusionBox: { border: `2px solid ${defined.accent.primary}`, borderRadius: 8, padding: 24, textAlign: 'center' },
+  conclusionBox: { border: `1px solid ${defined.border.medium}`, borderRadius: 8, padding: 24, textAlign: 'center' },
   conclusionText: { fontSize: 17, margin: '0 0 12px', lineHeight: 1.5 },
 
   // IA
